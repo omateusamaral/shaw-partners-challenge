@@ -1,5 +1,5 @@
-import { Grid, TextField, Typography } from "@mui/material";
-import { GridSearchIcon } from "@mui/x-data-grid";
+import { Grid, Typography } from "@mui/material";
+import { SearchInput } from "../common";
 
 interface TableActionsProps {
   since: string | undefined;
@@ -21,18 +21,10 @@ export function TableActions({ since, setSince }: TableActionsProps) {
         <Typography variant="h4">Users</Typography>
       </Grid>
       <Grid item xs={6} display="flex" justifyContent="flex-end">
-        <TextField
-          label="Search"
-          placeholder="A user ID. Only return users with an ID greater than this ID."
-          sx={{
-            width: 450,
-          }}
-          variant="standard"
-          value={since}
+        <SearchInput
           onChange={handleChange}
-          InputProps={{
-            endAdornment: <GridSearchIcon color="disabled" />,
-          }}
+          value={since}
+          placeHolder="A user ID. Only return users with an ID greater than this ID."
         />
       </Grid>
     </Grid>

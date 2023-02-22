@@ -49,3 +49,20 @@ async function doGetUser(username: string) {
     throw error;
   }
 }
+
+export async function listRepositories(
+  username: string,
+  filters?: string,
+  perPage = 100
+) {
+  try {
+    const instance = createInstance();
+    const response = await instance.get(
+      `/users/${username}/repos?per_page=${perPage}&affiliation=${filters}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
