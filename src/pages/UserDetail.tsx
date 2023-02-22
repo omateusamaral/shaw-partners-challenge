@@ -1,11 +1,11 @@
+import GitHubIcon from "@mui/icons-material/GitHub";
 import TodayRoundedIcon from "@mui/icons-material/TodayRounded";
 import {
   Avatar,
   Box,
   Container,
-  Fade,
+  Divider,
   Grid,
-  Paper,
   Slide,
   Stack,
   Typography,
@@ -33,76 +33,83 @@ export function UserDetail() {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: 800,
+        height: 600,
       }}
     >
       <Container maxWidth="xl">
         <Section loader={loadUser} value={username}>
           {(result) => (
-            <>
-              <Paper
-                sx={{
-                  padding: 4,
-                  maxWidth: 1422,
-                }}
-                elevation={3}
-                variant="outlined"
-                style={{ transformOrigin: "0 0 0" }}
-                {...{ timeout: 1000 }}
-              >
-                <Fade
-                  in
-                  style={{ transformOrigin: "0 0 0" }}
-                  {...{ timeout: 1000 }}
-                >
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
-                      <Avatar
-                        src={result.avatar_url}
-                        variant="rounded"
-                        sx={{
-                          minWidth: 150,
-                          minHeight: 150,
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={2}>
-                      <Stack direction="column">
-                        <Typography variant="h4" fontWeight="bold">
-                          {result.login}
-                        </Typography>
-                        <Typography variant="body2">
-                          GitUser ID: #{result.id}
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={2}>
-                      <Stack direction="row">
-                        <TodayRoundedIcon color="disabled" />
-                        <Typography variant="subtitle1" ml={1} fontWeight="500">
-                          {DateTime.fromISO(result.created_at).toFormat(
-                            "LLL dd yyyy"
-                          )}
-                        </Typography>
-                      </Stack>
-                    </Grid>
+            <Grid container spacing={1}>
+              <Grid item xs={3}>
+                <Slide direction="up" in>
+                  <Avatar
+                    src={result.avatar_url}
+                    variant="circular"
+                    sx={{
+                      minWidth: 294,
+                      minHeight: 294,
+                    }}
+                  />
+                </Slide>
+                <Slide direction="up" in>
+                  <Grid item xs={12} mb={2}>
+                    <Stack direction="column">
+                      <Typography variant="h4" fontWeight="bold">
+                        {result.login}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <GitHubIcon
+                          color="disabled"
+                          fontSize="small"
+                          sx={{
+                            mr: 1,
+                          }}
+                        />{" "}
+                        GitUser ID: #{result.id}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        fontWeight="500"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <TodayRoundedIcon
+                          color="disabled"
+                          sx={{
+                            mr: 1,
+                          }}
+                          fontSize="small"
+                        />
+                        {DateTime.fromISO(result.created_at).toFormat(
+                          "LLL dd yyyy"
+                        )}
+                      </Typography>
+                    </Stack>
                   </Grid>
-                </Fade>
-              </Paper>
-
-              <TableActions search={search} setSearch={setSearch} />
-              <Slide direction="up" in>
-                <Grid container>
-                  <Grid item xs={12}>
-                    <RepositoryTable
-                      url={result.html_url}
-                      username={username ?? ""}
-                      search={searchDebounce}
-                    />
-                  </Grid>
+                </Slide>
+                <Grid item xs={12}>
+                  <Divider
+                    sx={{
+                      width: "50%",
+                    }}
+                  />
+                  <Typography variant="subtitle1">{result.bio}</Typography>
                 </Grid>
-              </Slide>
-            </>
+              </Grid>
+
+              <Grid item xs={9}>
+                <TableActions search={search} setSearch={setSearch} />
+                <RepositoryTable
+                  url={result.html_url}
+                  username={username ?? ""}
+                  search={searchDebounce}
+                />
+              </Grid>
+            </Grid>
           )}
         </Section>
       </Container>

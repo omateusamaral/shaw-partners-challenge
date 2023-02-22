@@ -19,6 +19,7 @@ export interface User {
   site_admin: boolean;
   created_at: string;
   updated_at: string;
+  bio: string;
 }
 
 export interface Repository {
