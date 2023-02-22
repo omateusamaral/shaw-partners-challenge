@@ -17,4 +17,6 @@ export interface User {
   received_events_url: string;
   type: string;
   site_admin: boolean;
+  created_at: string;
+  updated_at: string;
 }

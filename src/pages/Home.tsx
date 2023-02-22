@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { useAsyncCallback } from "react-async-hook";
 import { useDebounce } from "usehooks-ts";
 import { listUsers } from "../api";
-import { ErrorDialog } from "../components/ErrorDialog";
-import { TableActions } from "../components/TableActions";
-import { UserTable } from "../components/UserTable";
+import { ErrorDialog } from "../components/common/ErrorDialog";
+import { TableActions, UserTable } from "../components/home";
 
 export default function Home() {
   const [since, setSince] = useState<string | undefined>("");
