@@ -1,9 +1,9 @@
 {
   "name": "shaw-test-front",
-  "private": true,
+  "private": false,
 
   "version": "1.0.0",
-  "homepage": "https://omateusamaral.github.io/shaw-partners-challenge/",
+  "homepage": "https://omateusamaral.github.io",
   "type": "module",
   "scripts": {
     "dev": "vite",
