@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { listUsers } from "../api";
@@ -60,9 +60,13 @@ export default function Home() {
             display="center"
             alignItems="center"
           >
-            <Button onClick={handleLoadMore} disabled={pageSize >= 100}>
-              Load more
-            </Button>
+            {items.length > 0 ? (
+              <Button onClick={handleLoadMore} disabled={pageSize >= 100}>
+                Load more
+              </Button>
+            ) : (
+              <Typography variant="body1">No users found</Typography>
+            )}
           </Grid>
         </Grid>
       </Container>
