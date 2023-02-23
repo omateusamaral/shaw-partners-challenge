@@ -1,2 +1,2 @@
+export * from "./ListUsers";
 export * from "./TableActions";
-export * from "./UserTable";

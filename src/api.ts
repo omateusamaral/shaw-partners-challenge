@@ -12,7 +12,7 @@ const userCache: {
   [key: string]: User;
 } = {};
 
-export async function listUsers(since: string | undefined, pageSize = 100) {
+export async function listUsers(since: string | undefined, pageSize = 30) {
   try {
     const instance = createInstance();
     const response = await instance.get(
