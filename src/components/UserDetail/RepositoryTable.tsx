@@ -17,7 +17,7 @@ const columns: GridColDef<Repository>[] = [
   {
     field: "id",
     headerName: "Id",
-    flex: 1,
+    width: 100,
   },
 
   {

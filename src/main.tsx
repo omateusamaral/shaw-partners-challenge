@@ -6,7 +6,7 @@ import { AppRoutes } from "./routes";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <AppRoutes />
     </BrowserRouter>
   </React.StrictMode>
