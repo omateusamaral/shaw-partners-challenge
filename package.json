@@ -3,7 +3,7 @@
   "private": false,
 
   "version": "1.0.0",
-  "homepage": ".",
+  "homepage": "https://omateusamaral.github.io/shaw-partners-challenge",
   "type": "module",
   "scripts": {
     "dev": "vite",
